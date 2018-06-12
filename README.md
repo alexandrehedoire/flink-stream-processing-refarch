@@ -28,6 +28,11 @@ To start the Flink runtime and submit the Flink program that is doing the analys
 $ ssh -C -D 8157 «EMR master node IP»
 ```
 
+Note to get access to the Hadoop Dashboard: 
+```
+ssh -i mypem.pem -v -N -L 8157:ec2-34-204-177-92.compute-1.amazonaws.com:8088  hadoop@ec2-34-204-177-92.compute-1.amazonaws.com
+```
+
 The EMR cluster that is provisioned by the CloudFormation template comes with two c4.xlarge core nodes with four vCPUs each. Generally, you match the number of node cores to the number of slots per task manager. For this post, it is reasonable to start a long-running Flink cluster with two task managers and four slots per task manager:
 
 ```
